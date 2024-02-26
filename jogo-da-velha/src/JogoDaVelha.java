@@ -9,6 +9,8 @@ public class JogoDaVelha {
       boolean game = true;
       String vitoria = "";
 
+      iniciarJogo(velha);
+
       while (game) {
         desenhaJogo(velha);
         vitoria=verificaVitoria(velha);
@@ -37,16 +39,14 @@ public class JogoDaVelha {
     public static void desenhaJogo(Campo[][] velha){
      //limparTela();
      try {
+            System.out.println("   0   1   2");
+            System.out.println("0  " + velha[0][0].getSimbolo() + " | " + velha[0][1].getSimbolo() + " | " + velha[0][2].getSimbolo());
+            System.out.println("  -----------");
+            System.out.println("1  " + velha[1][0].getSimbolo() + " | " + velha[1][1].getSimbolo() + " | " + velha[1][2].getSimbolo());
+            System.out.println("  -----------");
+            System.out.println("2  " + velha[2][0].getSimbolo() + " | " + velha[2][1].getSimbolo() + " | " + velha[2][2].getSimbolo());
+            System.out.println();
         
-        System.out.println("---------------------");
-        System.out.print( "0   1   2 \n");
-        System.out.print("0   " + "%c | %c | %c %n"+ velha[0][0].getSimbolo() + velha[0][1].getSimbolo() + velha[0][2].getSimbolo());
-        System.out.println("----------------------");
-        System.out.print("1   " + "%c | %c | %c %n"+ velha[1][0].getSimbolo() + velha[1][1].getSimbolo() + velha[1][2].getSimbolo());
-        System.out.println("----------------------");
-        System.out.print("2   " + "%c | %c | %c %n"+ velha[2][0].getSimbolo() + velha[2][1].getSimbolo() + velha[2][2].getSimbolo());
-        System.out.println("----------------------");
-   
      } catch (NullPointerException e) {
         // TODO: handle exception
         System.out.println("Erro ao montar o desenho do Jogo !");
@@ -70,6 +70,14 @@ public class JogoDaVelha {
         return p;
     }
 
+    public static void iniciarJogo(Campo[][] velha) {
+        for (int l = 0; l < velha.length; l++) {
+            for (int c = 0; c < velha[l].length; c++) {
+                velha[l][c] = new Campo();
+            }
+        }
+    }
+    
     public static boolean verificaJogada(Campo[][] velha, int[] posicao, char simboloAtual) {
         if (posicao[0] >= 0 && posicao[0] < velha.length && posicao[1] >= 0 && posicao[1] < velha[0].length) {
             if (velha[posicao[0]][posicao[1]].getSimbolo() == ' ') {
@@ -83,6 +91,7 @@ public class JogoDaVelha {
         }
         return false;
     }
+
 
     public static String verificaVitoria(Campo[][] velha){
         return "";
