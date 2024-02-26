@@ -13,7 +13,7 @@ public class Campo {
       if(this.simbolo == ' '){
         this.simbolo = simbolo;
       }else{
-        System.out.println("Campo já usado !");
+        System.out.println("Campo já Preenchido !");
       }
     }
 }
